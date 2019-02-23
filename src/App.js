@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from './store/actions/index';
+
 
 import Layout from './containers/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Logout from './containers/Auth/Logout/Logout';
+
+import * as actions from './store/actions/index';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
 
 const asyncCheckout = asyncComponent(() => {
@@ -23,7 +25,7 @@ const asyncAuth = asyncComponent(() => {
 class App extends Component {
   componentDidMount = () => {
     this.props.onTryAutoSignIn();
-  }
+  };
 
   render() {
     let routes = (

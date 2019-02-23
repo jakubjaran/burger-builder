@@ -13,7 +13,7 @@ import * as actions from '../../store/actions/index';
 
 class BurgerBuidler extends Component {
     state = {
-        purchasing: false,
+        purchasing: false
     };
 
     componentDidMount = () => {
@@ -52,10 +52,9 @@ class BurgerBuidler extends Component {
         const disabledInfo = {
             ...this.props.ings
         };
-
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0
-        }
+        };
 
         let orderSummary = null;
 
@@ -84,8 +83,10 @@ class BurgerBuidler extends Component {
 
         return (
             <>
-                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHanler}>
-                    {orderSummary}
+                <Modal
+                    show={this.state.purchasing}
+                    modalClosed={this.purchaseCancelHanler}>
+                        {orderSummary}
                 </Modal>
                 {burger}
             </>

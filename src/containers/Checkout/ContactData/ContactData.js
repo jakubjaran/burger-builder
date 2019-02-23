@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './ContactData.module.css';
+
 import Button from '../../../components/UI/Button/Button';
-import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
 import { checkValidity } from '../../../shared/formValidation';
+import axios from '../../../axios-orders';
 
 class ContactData extends Component {
     state = {
@@ -76,7 +78,7 @@ class ContactData extends Component {
                     value: '',
                     validation: {
                         required: true,
-                        isEmail: true,
+                        isEmail: true
                     },
                     valid: false,
                     touched: false
@@ -86,8 +88,8 @@ class ContactData extends Component {
                     elementConfig: {
                         options: [
                             {value: 'fastest', displayValue: 'Fastest'},
-                            {value: 'cheapest', displayValue: 'Cheapest'},
-                        ],
+                            {value: 'cheapest', displayValue: 'Cheapest'}
+                        ]
                     },
                     value: 'fastest',
                     validation: {},
@@ -144,26 +146,32 @@ class ContactData extends Component {
         };
         let form = (
             <>
-            <h4>Enter your Contact Data</h4>
-            <form onSubmit={this.orderHanlder}>
-                {formElementsArray.map(el => (
-                    <Input
-                        key={el.id}
-                        elementType={el.config.elementType}
-                        elementConfig={el.config.elementConfig}
-                        value={el.config.value}
-                        isInvalid={!el.config.valid}
-                        shouldValidate={el.config.validation}
-                        touched={el.config.touched}
-                        changed={(event) => this.inputChangeHandler(event, el.id)}/>
-                ))}
-                <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
-            </form>
+                <h4>Enter your Contact Data</h4>
+                <form onSubmit={this.orderHanlder}>
+                    {formElementsArray.map(el => (
+                        <Input
+                            key={el.id}
+                            elementType={el.config.elementType}
+                            elementConfig={el.config.elementConfig}
+                            value={el.config.value}
+                            isInvalid={!el.config.valid}
+                            shouldValidate={el.config.validation}
+                            touched={el.config.touched}
+                            changed={(event) => this.inputChangeHandler(event, el.id)}/>
+                    ))}
+                    <Button
+                        btnType="Success"
+                        disabled={!this.state.formIsValid}>
+                            ORDER
+                    </Button>
+                </form>
             </>
         );
+
         if (this.props.loading) {
             form = <Spinner/>
-        }
+        };
+
         return (
             <div className={styles.ContactData}>
                 {form}

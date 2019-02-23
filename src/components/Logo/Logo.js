@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './Logo.module.css';
+
 import logoImg from '../../assets/burger-logo.png';
 
 const Logo = (props) => (

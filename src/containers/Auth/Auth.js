@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import * as actions from '../../store/actions/index';
 import { checkValidity } from '../../shared/formValidation';
+
+import styles from './Auth.module.css';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import styles from './Auth.module.css';
+import * as actions from '../../store/actions/index';
 
 class Auth extends Component {
     state = {
@@ -123,12 +124,14 @@ class Auth extends Component {
                 {errorMessage}
                 <form onSubmit={this.onSubmitHandler}>
                     {form}
-                    <Button btnType="Success">SUBMIT</Button>
+                    <Button btnType="Success">
+                        SUBMIT
+                    </Button>
                 </form>
                 <Button
                     clicked={this.switchAuthModeHangler}
                     btnType="Danger">
-                    Sign {this.state.isSignUp ? 'in' : 'up'}
+                        Sign {this.state.isSignUp ? 'in' : 'up'}
                 </Button>
             </div>
         );

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './CheckoutSummary.module.css';
 
 import Burger from '../../Burger/Burger';
@@ -13,12 +14,14 @@ const CheckoutSummary = (props) => {
             </div>
             <Button
                 btnType="Danger"
-                clicked={props.checkoutCancel}
-            >CANCEL</Button>
+                clicked={props.checkoutCancel}>
+                    CANCEL
+            </Button>
             <Button
                 btnType="Success"
-                clicked={props.checkoutContinue}
-            >CONTINUE</Button>
+                clicked={props.checkoutContinue}>
+                    CONTINUE
+            </Button>
         </div>
     );
 };

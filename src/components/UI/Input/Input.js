@@ -4,7 +4,7 @@ import styles from './Input.module.css';
 
 const Input = (props) => {
     let inputElement = null;
-    const inputClasses = [styles.InputElement]
+    const inputClasses = [styles.InputElement];
 
     if (props.isInvalid && props.shouldValidate && props.touched) {
         inputClasses.push(styles.Invalid);
@@ -19,6 +19,7 @@ const Input = (props) => {
                             onChange={props.changed}
                             invalid={props.invalid}/>
             break;
+
         case ('textarea'):
             inputElement = <textarea
                             className={inputClasses.join(' ')}
@@ -27,6 +28,7 @@ const Input = (props) => {
                             onChange={props.changed}/>
             break;
         case ('select'):
+
             inputElement = (
                             <select
                             className={inputClasses.join(' ')}
@@ -39,6 +41,7 @@ const Input = (props) => {
                             ))}
                             </select>)
             break;
+
         default:
             inputElement = <input
                             className={inputClasses.join(' ')}
@@ -49,7 +52,9 @@ const Input = (props) => {
 
     return (
         <div className={styles.Input}>
-            <label>{props.label}</label>
+            <label>
+                {props.label}
+            </label>
             {inputElement}
         </div>
     );

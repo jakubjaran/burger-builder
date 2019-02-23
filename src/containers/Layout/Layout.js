@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 import styles from './Layout.module.css';
+
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
@@ -22,18 +23,17 @@ class Layout extends Component {
 
     render () {
         return (
-        <>
-            <Toolbar
-                openSideNav={this.sideDrawerOpenHanlder}
-                isAuth={this.props.isAuth}/>
-            <SideDrawer
-                closed={this.sideDrawerClosedHandler}
-                open={this.state.showSideDrawer}
-            />
-            <main className={styles.content}>
-                {this.props.children}
-            </main>
-        </>
+            <>
+                <Toolbar
+                    openSideNav={this.sideDrawerOpenHanlder}
+                    isAuth={this.props.isAuth}/>
+                <SideDrawer
+                    closed={this.sideDrawerClosedHandler}
+                    open={this.state.showSideDrawer}/>
+                <main className={styles.content}>
+                    {this.props.children}
+                </main>
+            </>
         );
     };
 };
